@@ -1,3 +1,3 @@
 <template>
-  <NuxtPage/>
+    this is home
 </template>
