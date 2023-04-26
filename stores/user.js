@@ -1,5 +1,9 @@
 
 import { defineStore } from 'pinia'
+import axios from '../plugins/axios'
+
+
+const $axios = axios().provide.axios
 
 export const useUserStore = defineStore('user', {
   state: () => ({
@@ -9,6 +13,7 @@ export const useUserStore = defineStore('user', {
   }),
   actions: {
     async getTokens() {
+        
         await $axios.get('/sanctum/csrf-cookie')
     },
 
