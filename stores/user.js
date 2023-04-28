@@ -10,6 +10,7 @@ export const useUserStore = defineStore('user', {
     id: '',
     name : '',
     email: '',
+    isAuthenticated: false
   }),
   actions: {
     async getTokens() {
@@ -23,6 +24,7 @@ export const useUserStore = defineStore('user', {
           email: email,
           password: password
         })
+        this.$state.isAuthenticated = true
       },
 
       async register(name, email, password, confirmPassword) {
@@ -32,6 +34,26 @@ export const useUserStore = defineStore('user', {
           password: password,
           password_confirmation: confirmPassword
         })
+        this.$state.isAuthenticated = true
+    },
+    async getUser() {
+      let res = await $axios.get('/api/logged-in-user')
+      
+      this.$state.id = res.data[0].id
+      this.$state.name = res.data[0].name
+      this.$state.email = res.data[0].email
+
+    },
+    async logout (){
+      await $axios.post('/logout')
+      this.resetUser()
+      
+    },
+    resetUser() {      
+      this.$state.id = ''
+      this.$state.name = ''
+      this.$state.email = ''
+      this.$state.isAuthenticated = false
     }
-  },
+  }
 })

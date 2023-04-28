@@ -15,7 +15,7 @@
         try {
             await $userStore.getTokens()
             await $userStore.register(name.value,email.value,password.value,confirmPassword.value)
-            // await $userStore.getUser()
+            await $userStore.getUser()
             router.push('/dashboard')
             $generalStore.isProcessing = false
         } catch (error) {

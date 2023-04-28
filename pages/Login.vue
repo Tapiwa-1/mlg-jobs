@@ -13,7 +13,7 @@
         try {
             await $userStore.getTokens()
             await $userStore.login(email.value, password.value)
-            // await $userStore.getUser()
+            await $userStore.getUser()
             router.push('/dashboard')
             $generalStore.isProcessing = false
         } catch (error) {

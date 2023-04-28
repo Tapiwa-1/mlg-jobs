@@ -16,12 +16,19 @@
                <span class="ml-3">{{ link.name }}</span>
             </NuxtLink>
          </li>
+         <li >
+            <button @click="logout"  class="flex items-center p-2 text-gray-900 w-full  rounded-lg dark:text-white hover:bg-red-100 dark:hover:bg-red-700">
+               <!-- <svg aria-hidden="true" class="w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path><path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path></svg> -->
+               <span class="ml-3">Logout</span>
+            </button>
+         </li>
       </ul>
    </div>
 </aside>
 
 </template>
 <script setup>
+const { $userStore, $generalStore} = useNuxtApp()
 import { onMounted } from 'vue'
 import { 
     initAccordions, 
@@ -51,10 +58,20 @@ onMounted(() => {
     initTooltips();
 })
 
+
 const NavLink = [
    { id: 1, link: '/dashboard' ,name: 'Dashboard'},
    {id: 2, link: '/department', name: 'Department'},
-]
+   // {id: 3, link: '/logout', name: 'Logout'},
    
+]
+const router = useRouter()
+
+function logout (){
+   $userStore.logout()
+   router.push('/');
+}
+
+
 
 </script>
