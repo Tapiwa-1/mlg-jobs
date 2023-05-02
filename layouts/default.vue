@@ -5,7 +5,8 @@
         <LogoNav/>
         <div class="flex items-center">
             <a href="tel:5541251234" class="mr-6 text-sm  text-gray-500 dark:text-white hover:underline">(555) 412-1234</a>
-            <NuxtLink to="/login" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</NuxtLink>
+            <NuxtLink v-if="$userStore.id == ''" to="/login" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Login</NuxtLink>
+            <NuxtLink v-else to="/dashboard" class="text-sm  text-blue-600 dark:text-blue-500 hover:underline">Dashboard</NuxtLink>
         </div>
     </div>
 </nav>
@@ -32,6 +33,7 @@
 
 </template>
 <script setup>
+const { $userStore, $generalStore} = useNuxtApp()
 import { onMounted } from 'vue'
 import { 
     initAccordions, 

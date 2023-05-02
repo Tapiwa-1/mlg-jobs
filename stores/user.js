@@ -55,5 +55,7 @@ export const useUserStore = defineStore('user', {
       this.$state.email = ''
       this.$state.isAuthenticated = false
     }
-  }
+    
+  },
+  persist: true,
 })

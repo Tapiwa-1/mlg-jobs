@@ -8,4 +8,5 @@ export const useGeneralStore = defineStore('general', {
     state: () => ({
        isProccesing: false
       }),
+      persist: true,
 })
