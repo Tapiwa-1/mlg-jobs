@@ -61,7 +61,10 @@ onMounted(() => {
 
 const NavLink = [
    { id: 1, link: '/dashboard' ,name: 'Dashboard'},
-   {id: 2, link: '/department', name: 'Department'},
+   { id: 2, link: '/roles' ,name: 'Roles'},
+   { id: 3, link: '/permissions' ,name: 'Permissions'},
+   { id: 3, link: '/users' ,name: 'Users'},
+   {id: 4, link: '/department', name: 'Department'},
    // {id: 3, link: '/logout', name: 'Logout'},
    
 ]
