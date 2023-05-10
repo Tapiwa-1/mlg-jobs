@@ -24,7 +24,8 @@
                        Can add jobs
                    </th>
                    <td class="px-6 py-4">
-                       Edit
+                       <div class="text-warning-500">Edit</div>
+                       <div class="text-red-500">Delete</div>
                    </td>
                  
                </tr>
