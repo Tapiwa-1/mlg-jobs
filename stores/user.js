@@ -11,6 +11,8 @@ export const useUserStore = defineStore('user', {
     name : '',
     email: '',
     users: null,
+    user: null,
+    user_id:'',
     isAuthenticated: false
   }),
   actions: {
@@ -39,12 +41,19 @@ export const useUserStore = defineStore('user', {
     },
     async getUser() {
       let res = await $axios.get('/api/logged-in-user')
-    
       this.$state.id = res.data[0].id
       this.$state.name = res.data[0].name
       this.$state.email = res.data[0].email
       this.getUsers()
-
+    },
+    async getEditUser(userId){
+      let res = await $axios.get(`/api/user/${userId}`,{
+        user_id: userId
+      })
+      this.$state.id = res.data[0].id
+      this.$state.name = res.data[0].name
+      this.$state.email = res.data[0].email
+      
     },
     async logout (){
       await $axios.post('/logout')

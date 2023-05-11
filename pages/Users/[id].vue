@@ -5,7 +5,7 @@
        <div class="p-4  rounded-lg">
         <div class="space-y-4 md:space-y-6">
             <div>
-                
+             {{  $userStore.name }}
             <InputLabel for="name" value="Role Name" />
                 <TextInput  
                     id="name"
@@ -22,7 +22,7 @@
             <PrimaryButton @click="editRole()">
                 Edit Role
             </PrimaryButton>
-          
+            
         </div>
        </div>
     </div>
@@ -60,7 +60,7 @@
         initPopovers();
         initTabs();
         initTooltips();
-        $roleStore.getRole(route.params.id)
+        $userStore.getEditUser(route.params.id)
     })
     const { $userStore, $generalStore, $roleStore} = useNuxtApp()
 
@@ -70,12 +70,12 @@
     let name = $roleStore.role.name
     let id = route.params.id
     let errors = ref(null)
-    const editRole = async () => {
+    const editUser = async () => {
         
         $generalStore.isProcessing = true
         errors.value = null
         try {
-            await $roleStore.editRole(id, name)
+            await $roleStore.editUser(id, name)
             router.push('/roles')
             $generalStore.isProcessing = false
         } catch (error) {

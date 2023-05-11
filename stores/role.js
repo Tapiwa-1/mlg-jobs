@@ -28,6 +28,13 @@ export const useRoleStore = defineStore('role', {
       })
       this.$state.role = res.data
     },
+    async editRole(roleId,name) {
+      
+      await $axios.post(`/api/update-role/${roleId}/${name}`,{
+        role_id: roleId,
+        name: name,
+      })
+    },
     async deleteRole(roleId){
       
       let res = await $axios.delete(`/api/role/${roleId}`, {

@@ -31,7 +31,7 @@
                     {{ user.email }}
                 </td>
                 <td class="px-6 py-4">
-                    role
+                    <NuxtLink :to="`/users/${user.id}`" class="text-warning-500">Assign</NuxtLink>
                 </td>
               
             </tr>
